@@ -3,13 +3,27 @@ using MyChat.Core.Models.Identity;
 
 namespace MyChat.Core.Models.ContactCluster.Entites;
 
-public class Contact(ContactId id, string firstUserId, string secondUserId)
+public class Contact
 {
-    public ContactId Id { get; set; } = id;
+    #pragma warning disable
+    private Contact() { } // EF Core constructor
+    #pragma warning enable
 
-    public string FirstUserId { get; } = firstUserId;
+    public Contact(ContactId id, string firstUserId, string secondUserId, DateTime createdDateTime)
+    {
+        Id = id;
+        FirstUserId = firstUserId;
+        SecondUserId = secondUserId;
+        CreatedDateTime = createdDateTime;
+    }
+
+    public ContactId Id { get; }
+
+    public string FirstUserId { get; }
     public ApplicationUser FirstUser { get; } = null!;
 
-    public string SecondUserId { get; } = secondUserId;
+    public string SecondUserId { get; }
     public ApplicationUser SecondUser { get; } = null!;
+
+    public DateTime CreatedDateTime { get; }
 }

@@ -8,6 +8,10 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="14.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.2" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
@@ -16,6 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MyChat.Core\MyChat.Core.csproj" />
     <ProjectReference Include="..\MyChat.DataAccess\MyChat.DataAccess.csproj" />
+    <ProjectReference Include="..\MyChat.Shared\MyChat.Shared.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,6 +5,10 @@ namespace MyChat.Core.Models.ChatCluster.Entities;
 
 public class Message
 {
+    #pragma warning disable
+    private Message() { } // EF Core constructor
+    #pragma warning enable
+
     public Message(MessageId id, ChatId chatId, string senderId, MessageValue messageValue, DateTime sentDateTime)
     {
         Id = id;

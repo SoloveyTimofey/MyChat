@@ -7,6 +7,10 @@ namespace MyChat.Core.Models.ChatCluster.Entities;
 
 public sealed class Chat
 {
+    #pragma warning disable
+    private Chat() { } // EF Core constructor
+    #pragma warning enable
+
     public Chat(ChatId id, ContactId contactId)
     {
         Id = id;

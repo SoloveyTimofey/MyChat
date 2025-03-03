@@ -8,15 +8,19 @@ namespace MyChat.Core.Models.ContactCluster.Entites;
 
 public class AddToContactRequest
 {
+    #pragma warning disable
+    private AddToContactRequest() { } // EF Core constructor
+    #pragma warning enable
+
     public AddToContactRequest(AddToContactRequestId id, string senderId, string receiverId)
     {
         Id = id;
         SenderId = senderId;
         ReceiverId = receiverId;
-        AddToContactRequestStatus = AddToContactRequestStatus.Pending;
+        Status = AddToContactRequestStatus.Pending;
     }
     public AddToContactRequestId Id { get; }
-    public AddToContactRequestStatus AddToContactRequestStatus { get; private set; }
+    public AddToContactRequestStatus Status { get; private set; }
 
     public string SenderId { get; }
     public ApplicationUser Sender { get; } = null!;
@@ -26,23 +30,23 @@ public class AddToContactRequest
 
     public Result Reject()
     {
-        if (AddToContactRequestStatus != AddToContactRequestStatus.Pending)
+        if (Status != AddToContactRequestStatus.Pending)
         {
             return Result.Failure(CoreErrors.AddToContactRequest.NotPending);
         }
 
-        AddToContactRequestStatus = AddToContactRequestStatus.Rejected;
+        Status = AddToContactRequestStatus.Rejected;
         return Result.Success();
     }
 
     public Result Accept()
     {
-        if (AddToContactRequestStatus != AddToContactRequestStatus.Pending)
+        if (Status != AddToContactRequestStatus.Pending)
         {
             return Result.Failure(CoreErrors.AddToContactRequest.NotPending);
         }
 
-        AddToContactRequestStatus = AddToContactRequestStatus.Accepted;
+        Status = AddToContactRequestStatus.Accepted;
         return Result.Success();
     }
 }
