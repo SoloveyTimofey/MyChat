@@ -14,7 +14,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Operations\" />
     <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyChat.Shared\MyChat.Shared.csproj" />
   </ItemGroup>
 
 </Project>
