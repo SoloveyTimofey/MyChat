@@ -1,0 +1,35 @@
+﻿@page
+@model MyChat.WebApp.Pages.Register.IndexModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1>Register</h1>
+
+<form method="post" class="d-flex justify-content-center align-items-center flex-column" style="height: 100vh;">
+    <div>
+        <label asp-for="Input.UserName">UserName</label> <br/>
+        <input asp-for="Input.UserName" /> <br />
+        <span asp-validation-for="Input.UserName"></span> <br />
+    </div>
+    <div class="mt-1">
+        <label asp-for="Input.EmailAddress">Email Address</label> <br />
+        <input asp-for="Input.EmailAddress" type="email"/> <br />
+        <span asp-validation-for="Input.EmailAddress"></span> <br />
+    </div>
+    <div class="mt-1">
+        <label asp-for="Input.Password">Password</label> <br />
+        <input asp-for="Input.Password" /> <br />
+        <span asp-validation-for="Input.Password"></span> <br />
+    </div>
+    <div class="mt-1">
+        <label asp-for="Input.ConfirmPassword">Confirm Password</label> <br />
+        <input asp-for="Input.ConfirmPassword" /> <br />
+        <span asp-validation-for="Input.ConfirmPassword"></span> <br />
+    </div>
+    <button type="submit" class="btn mt-3 btn-primary">Register</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
