@@ -1,0 +1,13 @@
+﻿@page
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Http
+
+@functions {
+    public void OnPost(string culture)
+    {
+        var cookieValue = CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture));
+        Response.Cookies.Append(CookieRequestCultureProvider.DefaultCookieName, cookieValue, new CookieOptions { Expires = DateTimeOffset.UtcNow.AddDays(30) });
+
+        RedirectToAction("Index");
+    }
+}

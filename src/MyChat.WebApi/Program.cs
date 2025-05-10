@@ -1,5 +1,8 @@
+using Microsoft.AspNetCore.Identity;
 using MyChat.Core;
+using MyChat.Core.Models.Identity;
 using MyChat.DataAccess;
+using MyChat.DataAccess.Context;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,16 +10,20 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddAuthorization();
+builder.Services.AddAuthentication(IdentityConstants.BearerScheme).AddCookie(IdentityConstants.ApplicationScheme)
+    .AddBearerToken(IdentityConstants.BearerScheme);
+
+builder.Services.AddIdentityCore<ApplicationUser>()
+    .AddEntityFrameworkStores<MyChatDbContext>()
+    .AddApiEndpoints();
+
 builder.Services
     .AddCoreServices()
     .AddDataAccessServices(builder.Configuration);
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
-{
-    var context = scope.ServiceProvider.GetRequiredService<MyChat.DataAccess.Context.MyChatDbContext>();
-}
 
 if (app.Environment.IsDevelopment())
 {
@@ -25,6 +32,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.MapIdentityApi<ApplicationUser>();
 
 app.UseAuthorization();
 

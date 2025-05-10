@@ -1,6 +1,6 @@
-﻿using MyChat.Core.Primitives;
+﻿using Ardalis.Result;
 using MyChat.Core.Errors;
-using MyChat.Core.Shared;
+using MyChat.Core.Primitives;
 
 namespace MyChat.Core.Models.ChatCluster.ValueObjects;
 
@@ -16,7 +16,7 @@ public class MessageValue : ValueObject
     {
         if (message.Length > MAX_LENGTH)
         {
-            return Result.Failure<MessageValue>(CoreErrors.Chat.InvalidMessageLenght);
+            return Result.Error(CoreErrors.Chat.InvalidMessageLenght);
         }
 
         return Result.Success(

@@ -1,8 +1,8 @@
-﻿using MyChat.Core.Errors;
+﻿using Ardalis.Result;
+using MyChat.Core.Errors;
 using MyChat.Core.Models.ContactCluster.Enums;
 using MyChat.Core.Models.ContactCluster.ValuesObjects;
 using MyChat.Core.Models.Identity;
-using MyChat.Core.Shared;
 
 namespace MyChat.Core.Models.ContactCluster.Entites;
 
@@ -32,7 +32,7 @@ public class AddToContactRequest
     {
         if (Status != AddToContactRequestStatus.Pending)
         {
-            return Result.Failure(CoreErrors.AddToContactRequest.NotPending);
+            return Result.Error(CoreErrors.AddToContactRequest.NotPending);
         }
 
         Status = AddToContactRequestStatus.Rejected;
@@ -43,7 +43,7 @@ public class AddToContactRequest
     {
         if (Status != AddToContactRequestStatus.Pending)
         {
-            return Result.Failure(CoreErrors.AddToContactRequest.NotPending);
+            return Result.Error(CoreErrors.AddToContactRequest.NotPending);
         }
 
         Status = AddToContactRequestStatus.Accepted;

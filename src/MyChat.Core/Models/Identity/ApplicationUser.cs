@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using MyChat.Core.Models.ChatCluster.Entities;
 using MyChat.Core.Models.ContactCluster.Entites;
 
 namespace MyChat.Core.Models.Identity;
