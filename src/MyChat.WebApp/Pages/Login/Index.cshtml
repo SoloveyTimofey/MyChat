@@ -1,0 +1,39 @@
+﻿@page
+@using Microsoft.AspNetCore.Mvc.Localization;
+@model MyChat.WebApp.Pages.Login.IndexModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+@inject IViewLocalizer Localizer;
+
+<h1>@Localizer["Login"]</h1>
+
+<form method="post" class="d-flex justify-content-center align-items-center flex-column" style="height: 100vh;">
+    <div class="mt-1">
+        <label asp-for="Input.UserName">@Localizer["UserName"]</label> <br />
+        <input asp-for="Input.UserName" /> <br />
+        <span asp-validation-for="Input.UserName"></span> <br />
+    </div>
+    <div class="mt-1">
+        <label asp-for="Input.Password">@Localizer["Password"]</label> <br />
+        <input asp-for="Input.Password" /> <br />
+        <span asp-validation-for="Input.Password"></span> <br />
+    </div>
+
+    <div class="text-danger mt-2">
+        @if (ViewData.ModelState["Login"] != null)
+        {
+            foreach (var error in ViewData.ModelState["Login"].Errors)
+            {
+                <p>@error.ErrorMessage</p>
+            }
+        }
+    </div>
+
+    <button type="submit" class="btn mt-3 btn-primary">@Localizer["Login"]</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
