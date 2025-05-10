@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyChat.DataAccess", "src\My
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyChat.WebApi", "src\MyChat.WebApi\MyChat.WebApi.csproj", "{50C877BB-3F7D-4BFB-9A03-D65EAF83C08B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyChat.WebApp", "src\MyChat.WebApp\MyChat.WebApp.csproj", "{199CE735-4668-444D-9775-07F9D7E5D61F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyChat.WebApp", "src\MyChat.WebApp\MyChat.WebApp.csproj", "{199CE735-4668-444D-9775-07F9D7E5D61F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
